@@ -132,15 +132,15 @@ Os vídeos de demonstração do projeto estão disponíveis na pasta `video`. Os
 
 ### `main.mp4` - Demonstração do projeto com o robô conectado
 
-![main.mp4](video/main.mp4)
+https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/21177b0c-0d77-4391-bdf7-362b1aafff6f
 
 ### `no_robot.mp4` - Demonstração do projeto sem o robô conectado
 
-![no_robot.mp4](video/no_robot.mp4)
+https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/53f16ce8-f612-4d46-a152-9e6f09b0b227
 
 ### `logs.mp4` - Demonstração da página de logs do sistema
 
-![logs.mp4](video/logs.mp4)
+https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/f4e34565-990e-4da8-82d9-9e180556cd8c
 
 ## Dependências
 
