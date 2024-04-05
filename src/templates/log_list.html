@@ -1,0 +1,18 @@
+{% for log in logs %}
+<tr>
+    <td>{{ log.doc_id }}</td>
+    <td>{{ log.data.timestamp }}</td>
+    <td>{{ log.data.ip }}</td>
+    <td>{{ log.data.action }}</td>
+    <td>
+        <ul>
+            {% for key, value in log.data.params.items() %}
+            <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </td>
+    <td>
+        <button class="button" hx-delete='/api/logs/{{log.doc_id}}'>Delete</button>
+    </td>
+</tr>
+{% endfor %}

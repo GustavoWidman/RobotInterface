@@ -1,0 +1,56 @@
+<div class="container has-text-centered" style="padding-top:12%">
+	<!-- x, y, z and r values for post request to /api/robot/move or /api/robot/move_unsafe (two buttons, 4 inputs)-->
+	<div class="field is-grouped is-grouped-centered mt-4">
+		<div class="control">
+			<input class="input" type="number" placeholder="X" id="x" name="x" />
+		</div>
+		<div class="control">
+			<input class="input" type="number" placeholder="Y" id="y" name="y" />
+		</div>
+		<div class="control">
+			<input class="input" type="number" placeholder="Z" id="z" name="z" />
+		</div>
+	</div>
+	<div class="field is-grouped is-grouped-centered mt-4 mb-8">
+		<div class="control">
+			<button class="button is-info" hx-post="/api/robot/move" hx-trigger="click" hx-ext="json-enc" hx-swap="none" hx-include="[name='x'], [name='y'], [name='z']" hx-headers="{'ContentType': 'application/json'}">
+				Move
+			</button>
+			<button class="button is-danger" hx-post="/api/robot/move_unsafe" hx-trigger="click" hx-ext="json-enc" hx-swap="none" hx-include="[name='x'], [name='y'], [name='z']" hx-headers="{'ContentType': 'application/json'}">
+				Move Unsafe
+			</button>
+		</div>
+	</div>
+
+	<!-- dropdown for toggle state of "gripper" or "suction", toggle true or false and button submit to /api/robot/tool with json body with keys "tool" (str) and "state" (bool) -->
+	<div class="field is-grouped is-grouped-centered mt-4 mb-8">
+		<div class="control">
+			<div class="select">
+				<select id="tool" name="tool">
+					<option value="gripper">Gripper</option>
+					<option value="suction">Suction</option>
+				</select>
+			</div>
+		</div>
+		<div class="control">
+			<div class="select">
+				<select id="state" name="state">
+					<option value="true">On</option>
+					<option value="false">Off</option>
+				</select>
+			</div>
+		</div>
+		<div class="control">
+			<button class="button is-info" hx-post="/api/robot/tool" hx-trigger="click" hx-ext="json-enc" hx-swap="none" hx-include="[name='tool'], [name='state']" hx-headers="{'ContentType': 'application/json'}">
+				Submit
+			</button>
+		</div>
+	</div>
+
+
+
+
+	<button class="button is-info" hx-post="/api/robot/home" hx-header="{'ContentType': 'application/json'}" hx-swap="none" hx-ext="json-enc">
+		Home
+	</button>
+</div>

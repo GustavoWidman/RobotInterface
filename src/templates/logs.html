@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dobot Logs</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css" />
+</head>
+
+<body>
+	<nav class="navbar">
+		<div class="navbar-menu">
+		  <div class="navbar-start">
+			<a class="navbar-item" href="/"> Dashboard </a>
+			<a class="navbar-item" href="/logs"> Logs </a>
+		  </div>
+		</div>
+	</nav>
+
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Logs</h1>
+            <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Timestamp</th>
+                        <th>IP Address</th>
+                        <th>Action</th>
+                        <th>Parameters</th>
+						<th></th>
+                    </tr>
+                </thead>
+                <tbody hx-get="/api/logs" hx-trigger="load" hx-swap="innerHTML"></tbody>
+            </table>
+			<button class="button is-danger mb-4 py-1" hx-delete="/api/logs/all">Delete All</button>
+		</div>
+    </section>
+</body>
+
+</html>
