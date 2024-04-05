@@ -12,7 +12,9 @@ def current():
 
 	robot = RobotWrapper()
 
-	if robot.init(): return robot.current()
+	if not robot.not_available:
+		current = robot.current()
+		return render_template("current.html", current=current)
 
 	return 'Robot not initialized', 500
 
@@ -22,7 +24,7 @@ def move():
 
 	robot = RobotWrapper()
 
-	if robot.init():
+	if not robot.not_available:
 		#? Data validation
 		data = request.json
 		if not data: return 'Invalid data', 400
@@ -46,7 +48,7 @@ def home():
 
 	robot = RobotWrapper()
 
-	if robot.init():
+	if not robot.not_available:
 		robot.home()
 		return 'Moving robot to home'
 
@@ -58,7 +60,7 @@ def tool():
 
 	robot = RobotWrapper()
 
-	if robot.init():
+	if not robot.not_available:
 		#? Data validation
 		data = request.json
 		if not data: return 'Invalid data', 400
@@ -77,7 +79,7 @@ def move_unsafe():
 
 	robot = RobotWrapper()
 
-	if robot.init():
+	if not robot.not_available:
 		#? Data validation
 		data = request.json
 		if not data: return 'Invalid data', 400
@@ -98,10 +100,8 @@ def move_unsafe():
 def test_robot():
 	robot = RobotWrapper()
 
-	if robot.init():
-		return render_template("dashboard.html")
+	if robot.not_available: return render_template("no_robot.html")
 
-	return render_template("no_robot.html")
-
+	return render_template("dashboard.html")
 
 

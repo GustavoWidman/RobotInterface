@@ -10,16 +10,16 @@ from utils.ports import serial_ports
 class RobotWrapper:
 	_instance = None
 	_initialized = False
+	not_available = False
 
-	def __new__(cls, auto_init: bool = False):
-		if cls._instance is None:
-			cls._instance = super(RobotWrapper, cls).__new__(cls)
-
-		if auto_init: cls._instance.init()
+	def __new__(cls):
+		if cls._instance is None: cls._instance = super(RobotWrapper, cls).__new__(cls)
 
 		return cls._instance
 
-	def __init__(self, auto_init: bool = False):
+	def __init__(self):
+		if self._initialized: return
+
 		printc("[&6ROBOT&f] &bInstanciando classe do robô...")
 
 		self.x: float
@@ -28,23 +28,20 @@ class RobotWrapper:
 		self.r: float
 
 
-	def init(self):
-		"""
-			Inicializa a conexão com o robô
-		"""
-		if self._initialized: return self
-		printc("[&6ROBOT&f] &bEstabelecendo conexão com o robô...")
+		printc("[&6ROBOT&f] &bEstabelecendo conexão inicial com o robô...")
 
 		port = self.scan_ports()
-		if port is None: return None
-
+		if port is None: self.not_available = True; return
+		self.not_available = False																																																																			
+	
 		self.robot = Dobot(port=port)
 		printc("[&6ROBOT&f] &aConexão estabelecida com sucesso!")
 
 		self._initialized = True
 		self.update_pos()
 
-		return self
+		return
+
 
 	def scan_ports(self) -> str | None:
 		"""
@@ -64,7 +61,6 @@ class RobotWrapper:
 		return ports[0]
 
 	def update_pos(self) -> None:
-		if not self._initialized: self.init()
 		self.x, self.y, self.z, self.r, self.j1, self.j2, self.j3, self.j4 = self.robot.pose()
 
 	def current(self) -> dict[str, float]:
@@ -76,8 +72,6 @@ class RobotWrapper:
 		}
 
 	def movej_to(self, x: float, y: float, z: float, r: float, wait: bool = True):
-		if not self._initialized: self.init()
-
 		self.robot._set_ptp_cmd( # type: ignore
 			x=x, y=y, z=z, r=r, wait=wait,
 			mode=pydobot.enums.PTPMode.MOVJ_XYZ, # type: ignore
@@ -88,11 +82,9 @@ class RobotWrapper:
 			y: float | None = None,
 			z: float | None = None,
 		) -> None:
-		if not self._initialized: self.init()
-
-		if not x: x = self.x
-		if not y: y = self.y
-		if not z: z = self.z
+		if x == None: x = self.x
+		if y == None: y = self.y
+		if z == None: z = self.z
 
 		printc(f"[&6ROBOT&f] &bMovendo robô para (&5{x}&b, &5{y}&b, &5{z}&b)")
 
@@ -105,20 +97,13 @@ class RobotWrapper:
 		y: float | None = None,
 		z: float | None = None,
 	) -> None:
-		if not self._initialized: self.init()
-
 		self.move(x=self.x, y=self.y, z=150) # Move to max z
 		self.move(x=x, y=y, z=150) # Move horizontally
 		self.move(x=x, y=y, z=z) # Move back down
 
-	def home(self):
-		if not self._initialized: self.init()
-
-		self.move_safe(250, 0, 150)
+	def home(self): self.move_safe(250, 0, 150)
 
 	def tool(self, tool: Literal["suction", "gripper"], state: bool):
-		if not self._initialized: self.init()
-
 		printc(f"[&6ROBOT&f] &bLigando a ferramenta &5{tool}")
 
 		match tool:

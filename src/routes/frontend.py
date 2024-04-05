@@ -1,7 +1,4 @@
-from flask import Blueprint, Response, render_template, request
-
-# from database.wrapper import DB
-# from utils.logger import log
+from flask import Blueprint, render_template
 
 router = Blueprint('frontend', __name__)
 

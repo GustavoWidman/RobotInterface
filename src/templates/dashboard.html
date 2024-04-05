@@ -1,8 +1,18 @@
-<div class="container has-text-centered" style="padding-top:12%">
-	<!-- x, y, z and r values for post request to /api/robot/move or /api/robot/move_unsafe (two buttons, 4 inputs)-->
-	<div class="field is-grouped is-grouped-centered mt-4">
+<div class="container has-text-centered" style="padding-top:3%; width: 50%">
+	<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" style="margin-bottom: 7%;">
+		<thead>
+			<tr>
+				<th>X</th>
+				<th>Y</th>
+				<th>Z</th>
+			</tr>
+		</thead>
+		<tbody hx-get="/api/robot/current" hx-trigger="load, every 500ms" hx-swap="innerHTML" ></tbody>
+	</table>
+
+	<div class="field is-grouped is-grouped-centered" style="margin-bottom: 7%;">
 		<div class="control">
-			<input class="input" type="number" placeholder="X" id="x" name="x" />
+			<input class="input " type="number" placeholder="X" id="x" name="x" />
 		</div>
 		<div class="control">
 			<input class="input" type="number" placeholder="Y" id="y" name="y" />
@@ -10,8 +20,6 @@
 		<div class="control">
 			<input class="input" type="number" placeholder="Z" id="z" name="z" />
 		</div>
-	</div>
-	<div class="field is-grouped is-grouped-centered mt-4 mb-8">
 		<div class="control">
 			<button class="button is-info" hx-post="/api/robot/move" hx-trigger="click" hx-ext="json-enc" hx-swap="none" hx-include="[name='x'], [name='y'], [name='z']" hx-headers="{'ContentType': 'application/json'}">
 				Move
@@ -22,8 +30,7 @@
 		</div>
 	</div>
 
-	<!-- dropdown for toggle state of "gripper" or "suction", toggle true or false and button submit to /api/robot/tool with json body with keys "tool" (str) and "state" (bool) -->
-	<div class="field is-grouped is-grouped-centered mt-4 mb-8">
+	<div class="field is-grouped is-grouped-centered" style="margin-bottom: 7%;">
 		<div class="control">
 			<div class="select">
 				<select id="tool" name="tool">
