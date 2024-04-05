@@ -136,11 +136,11 @@ https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/21177b0c-
 
 ### `no_robot.mp4` - Demonstração do projeto sem o robô conectado
 
-https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/53f16ce8-f612-4d46-a152-9e6f09b0b227
+https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/f4e34565-990e-4da8-82d9-9e180556cd8c
 
 ### `logs.mp4` - Demonstração da página de logs do sistema
 
-https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/f4e34565-990e-4da8-82d9-9e180556cd8c
+https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/53f16ce8-f612-4d46-a152-9e6f09b0b227
 
 ## Dependências
 
