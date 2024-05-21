@@ -1,4 +1,4 @@
-# RobotFlask-Ponderada - Gustavo Wagon Widman
+# RobotInterface - Gustavo Wagon Widman
 Esta atividade tem por objetivo realizar uma integração do sistema construído com Flask e o robô físico. O estudante deverá construir um sistema que realiza o log dos comandos enviados por uma interface gráfica construída com HTMX e servida com Flask em um servidor local. Neste servidor, o robô físico deve estar conectado. Quando o robô não estiver conectado, apenas as funcionalidades de visualização do log devem estar disponíveis no sistema. A forma como a interface do sistema será construída fica a critério do estudante, desde que contemple no mínimo: - Uma interface de dashboard para visualizar os logs do sistema; - Uma interface que permita controlar o robô. O banco de dados utilizado deve ser o TinyDB. Como barema, espera-se encontrar: 1. Backend construído em Flask conectado ao banco de dados TinyDB (até 2.0 pontos); 2. Frontend construído com HTMX (até 2.0 pontos); 3. O sistema verifica se o robô está conectado e exibe as interfaces corretamente (até 2.0 pontos); 4. Existe uma página funcional de controle do robô (até 2.0 pontos); 5. Existe uma página funcional de exibição de logs do sistema (até 2.0 pontos).
 
 ## Descrição
@@ -132,15 +132,15 @@ Os vídeos de demonstração do projeto estão disponíveis na pasta `video`. Os
 
 ### `main.mp4` - Demonstração do projeto com o robô conectado
 
-https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/21177b0c-0d77-4391-bdf7-362b1aafff6f
+https://github.com/GustavoWidman/RobotInterface/assets/123963822/21177b0c-0d77-4391-bdf7-362b1aafff6f
 
 ### `no_robot.mp4` - Demonstração do projeto sem o robô conectado
 
-https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/f4e34565-990e-4da8-82d9-9e180556cd8c
+https://github.com/GustavoWidman/RobotInterface/assets/123963822/f4e34565-990e-4da8-82d9-9e180556cd8c
 
 ### `logs.mp4` - Demonstração da página de logs do sistema
 
-https://github.com/GustavoWidman/RobotFlask-Ponderada/assets/123963822/53f16ce8-f612-4d46-a152-9e6f09b0b227
+https://github.com/GustavoWidman/RobotInterface/assets/123963822/53f16ce8-f612-4d46-a152-9e6f09b0b227
 
 ## Dependências
 
